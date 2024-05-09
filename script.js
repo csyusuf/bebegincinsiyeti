@@ -1,16 +1,16 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
     const questions = [
-        { question: "Is ice cream cold?", answer: true },
-        { question: "Do cats fly?", answer: false },
-        { question: "Is water wet?", answer: true },
-        { question: "Can cars swim?", answer: false },
-        { question: "Is fire hot?", answer: true },
-        { question: "Do fish breathe air?", answer: false },
-        { question: "Is the sky blue?", answer: true },
-        { question: "Do birds walk?", answer: true },
-        { question: "Can humans breathe underwater?", answer: false },
-        { question: "Is snow hot?", answer: false }
+        { question: "$1'in TL karsiligi 33 TL", answer: false },
+        { question: "Yakup 4 yil sonra 3 sinifta olmus olacak", answer: true },
+        { question: "Yarin hava yagisli olacak", answer: false },
+        { question: "Tesla'nin tavsiye edilen gunluk sarj yuzdesi %90", answer: false },
+        { question: "Garajin ustundeki kamera calisiyor", answer: false },
+        { question: "Yakubun boyu 45 cm", answer: false },
+        { question: "Evimizin ic buyuklugu 2600 sqft", answer: true },
+        { question: "Usak iller siralamasinda 50. sirada yer alir", answer: false },
+        { question: "Mardin nufus siralamasinda 26. sirada yer alir", answer: true },
+        { question: "Bebegin cinsiyeti henuz belli degil", answer: false }
     ];
 
     const tilesContainer = document.getElementById('tiles');
