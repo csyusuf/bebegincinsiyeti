@@ -29,31 +29,54 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         tilesContainer.appendChild(tile);
     });
-
-    const finalTile = document.getElementById('finalTile');
-    finalTile.onclick = function() {
-        for (let i = 0; i < 50; i++) {  // Create 50 balloons
-       // document.body.style.backgroundColor = "blue";
-        const balloonContainer = document.getElementById('balloonContainer');
-        const quizContainer = document.getElementById('quiz-container');
-        quizContainer.style.display = 'none';
-        balloonContainer.style.display = "block";
-            //createBalloon();
+    
+    // script.js
+function startCountdown() {
+    let countdown = 10;
+    const doubleBallonsContainer = document.getElementById('doubleBallonsAndCounter');
+    doubleBallonsContainer.style.display = 'inline-flex';
+    const balloons = document.querySelectorAll('.balloon');
+    const countdownDisplay = document.getElementById('countdownDisplay');
+ balloons.forEach(balloon => balloon.style.backgroundColor = 'gray');
+ 
+    const timer = setInterval(() => {
+        countdown--;
+        countdownDisplay.textContent = countdown;
+			console.log('countdown: ' + countdown);
+        // Ensure there's a valid index for balloons
+        if (countdown >= 0) {
+            // Update the color of the current balloon
+            if(countdown % 2 === 0)
+            {
+           	 balloons[0].style.backgroundColor = 'blue';
+             balloons[1].style.backgroundColor = 'gray';
+            }
+            else{
+             balloons[0].style.backgroundColor = 'gray';
+             balloons[1].style.backgroundColor = 'pink';
+            }
+           
         }
-    };
 
-    function createBalloon() {
-        const balloon = document.createElement('div');
-        balloon.classList.add('balloon');
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.animationDuration = (5 + Math.random() * 5) + 's'; // Randomize duration between 5-10 seconds
-        document.body.appendChild(balloon);
+        // Reveal message at the end
+        if (countdown === 0) {
+            clearInterval(timer);
+             const balloonContainer = document.getElementById('balloonContainer');
+               balloonContainer.style.display = "block";
+        }
+    }, 1000);
+};
 
-        // Remove balloon after animation to clean up the DOM
-        balloon.addEventListener('animationend', function() {
-            balloon.remove();
-        });
-    }
+  const finalTile = document.getElementById('finalTile');
+   finalTile.onclick = function() {
+    startCountdown();
+    finalTile.style.display = "none";
+      // document.body.style.backgroundColor = "blue";
+     
+     const quizContainer = document.getElementById('quiz-container');
+     quizContainer.style.display = 'none';
+      
+   };
 
     function checkCompletion() {
         const allHidden = Array.from(document.querySelectorAll('.tile')).every(t => t.style.display === 'none');
@@ -68,3 +91,4 @@ document.addEventListener('DOMContentLoaded', function() {
         checkCompletion();
     };
 });
+
